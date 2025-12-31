@@ -11,12 +11,20 @@ export const Portofolio: CollectionConfig = {
       name: 'tag',
       type: 'text',
       required: true,
+      label: {
+        id: 'Tag Portofolio',
+        en: 'Tag',
+      },
     },
     {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
       required: true,
+      label: {
+        id: 'Gambar',
+        en: 'Image',
+      },
     },
   ],
 }

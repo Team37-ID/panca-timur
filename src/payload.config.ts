@@ -13,6 +13,9 @@ import { Portofolio } from './collections/Portofolio'
 import { Services } from './collections/Services'
 import { Blogs } from './collections/Blogs'
 
+import { en } from '@payloadcms/translations/languages/en'
+import { id } from '@payloadcms/translations/languages/id'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -25,6 +28,10 @@ export default buildConfig({
   },
   collections: [Blogs, Users, Media, Portofolio, Products, Services],
   editor: lexicalEditor(),
+  i18n: {
+    supportedLanguages: { en, id },
+    fallbackLanguage: 'id',
+  },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
