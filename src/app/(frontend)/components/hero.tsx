@@ -1,10 +1,17 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { MoveUpRight, Phone } from 'lucide-react'
+import { ArrowUpRight, Phone } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Hero = () => {
+  const handleBookaConsultation = () => {
+    const pesan = `Halo, saya ingin menanyakan ...`
+    const url = `https://wa.me/62xxxxxx?text=${encodeURIComponent(pesan)}`
+    window.open(url, '_blank')
+  }
+
   return (
     <div className="flex flex-col md:flex-row gap-6 items-center justify-between overflow-hidden">
       <div className="flex flex-col gap-4 max-w-3xl px-6 lg:px-8 w-full">
@@ -24,15 +31,17 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full">
-          <Button className="w-full lg:w-[243px]">
-            <Phone className="w-4 h-4" />
+          <Button onClick={handleBookaConsultation} className="w-full lg:w-[243px]">
+            <Phone />
             Book a Consultation
           </Button>
 
-          <Button variant="secondary" className="w-full lg:w-[243px]">
-            View Projects
-            <MoveUpRight className="w-4 h-4" />
-          </Button>
+          <Link href={'/detailPortfolio'}>
+            <Button variant="secondary" className="w-full lg:w-[243px]">
+              View Projects
+              <ArrowUpRight />
+            </Button>
+          </Link>
         </div>
       </div>
 
