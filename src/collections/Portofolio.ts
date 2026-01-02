@@ -5,6 +5,16 @@ export const Portofolio: CollectionConfig = {
   admin: {
     useAsTitle: 'tag',
   },
+  labels: {
+    singular: {
+      id: 'Portofolio',
+      en: 'Portofolio',
+    },
+    plural: {
+      id: 'Portofolio',
+      en: 'Portofolios',
+    },
+  },
   auth: false,
   fields: [
     {

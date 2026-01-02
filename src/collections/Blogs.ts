@@ -75,6 +75,7 @@ export const Blogs: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: true,
+      localized: true,
       editor: lexicalEditor({
         admin: {
           placeholder: {

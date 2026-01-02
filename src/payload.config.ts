@@ -31,6 +31,43 @@ export default buildConfig({
   i18n: {
     supportedLanguages: { en, id },
     fallbackLanguage: 'id',
+    translations: {
+      id: {
+        lexical: {
+          general: {
+            slashMenuListGroupLabel: 'Daftar',
+            slashMenuBasicGroupLabel: 'Komponen Dasar',
+          },
+          heading: {
+            label: 'Heading',
+          },
+          checklist: {
+            label: 'Ceklis',
+          },
+          orderedList: {
+            label: 'Poin Poin Nomor',
+          },
+          unorderedList: {
+            label: 'Poin Poin Titik',
+          },
+          horizontalRule: {
+            label: 'Garis Horizontal',
+          },
+          upload: {
+            label: 'Upload Gambar',
+          },
+          blockquote: {
+            label: 'Kutipan',
+          },
+          relationship: {
+            label: 'Link blog lain',
+          },
+          paragraph: {
+            label: 'Teks paragraf',
+          },
+        },
+      },
+    },
   },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

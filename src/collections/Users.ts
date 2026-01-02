@@ -7,11 +7,11 @@ export const Users: CollectionConfig = {
   },
   labels: {
     singular: {
-      id: 'Pengguna',
+      id: 'Pengguna (Admin)',
       en: 'User',
     },
     plural: {
-      id: 'Pengguna',
+      id: 'Pengguna (Admin)',
       en: 'Users',
     },
   },
