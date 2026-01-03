@@ -16,6 +16,8 @@ import { Blogs } from './collections/Blogs'
 import { en } from '@payloadcms/translations/languages/en'
 import { id } from '@payloadcms/translations/languages/id'
 import { Settings } from './payload-globals'
+import { Documents } from './collections/Documents'
+import { Companies } from './collections/Companies'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,7 +29,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Blogs, Users, Media, Portofolio, Products, Services],
+  collections: [Blogs, Companies, Documents, Users, Media, Portofolio, Products, Services],
   globals: [Settings],
   editor: lexicalEditor(),
   i18n: {
