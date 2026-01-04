@@ -30,13 +30,14 @@ export default function AboutUsPage() {
   return (
     <>
       <Navbar />
-      <Image
-        className=""
-        width={1280}
-        height={400}
-        alt="Image About Us"
-        src={'/dokumPancaTimurR/team.jpg'}
-      />
+      <div className="relative w-full h-[122px] md:h-[244px] xl:h-[400px]">
+        <Image
+          className="object-cover"
+          fill
+          alt="Image About Us"
+          src={'/dokumPancaTimurR/team.jpg'}
+        />
+      </div>
       <div className="flex flex-col lg:flex-row px-[24px] py-[12px] md:px-[44px] md:py-[20px]  xl:px-[68px] xl:py-[58px] ">
         <h1 className="titleh1 text-[#0062B0] w-full">
           Who We Are Behind <br className="hidden xl:block" />
@@ -54,12 +55,12 @@ export default function AboutUsPage() {
               Book a Consultation
             </Button>
 
-            <Link href={'/detailPortfolio'}>
-              <Button variant="secondary" className="w-full lg:w-[243px]">
+            <Button asChild variant="secondary" className="w-full lg:w-[243px]">
+              <Link href={'/detailPortfolio'}>
                 View Projects
                 <ArrowUpRight />
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
