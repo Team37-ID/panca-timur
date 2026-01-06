@@ -13,7 +13,10 @@ export const Blogs: CollectionConfig = {
   slug: 'blogs',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'status', 'publishedAt', 'featuredImg'],
+    group: {
+      id: 'Halaman Blog',
+      en: 'Blog Page',
+    },
   },
   access: {
     read: () => true,

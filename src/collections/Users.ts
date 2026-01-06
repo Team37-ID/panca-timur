@@ -4,6 +4,10 @@ export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
     useAsTitle: 'email',
+    group: {
+      id: 'Pengaturan Umum',
+      en: 'General Settings',
+    },
   },
   labels: {
     singular: {

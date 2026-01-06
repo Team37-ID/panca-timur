@@ -4,6 +4,10 @@ export const Companies: CollectionConfig = {
   slug: 'companies',
   admin: {
     useAsTitle: 'name',
+    group: {
+      id: 'Halaman Landing Page',
+      en: 'Landing Page',
+    },
   },
   labels: {
     singular: {
@@ -15,6 +19,7 @@ export const Companies: CollectionConfig = {
       en: 'Companies',
     },
   },
+
   auth: false,
   fields: [
     {

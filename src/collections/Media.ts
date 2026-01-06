@@ -5,6 +5,12 @@ export const Media: CollectionConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: {
+      id: 'Pengaturan Umum',
+      en: 'General Settings',
+    },
+  },
   fields: [
     {
       name: 'alt',

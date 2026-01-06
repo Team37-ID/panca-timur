@@ -2,6 +2,12 @@ import { GlobalConfig } from 'payload'
 
 export const Settings: GlobalConfig = {
   slug: 'settings',
+  admin: {
+    group: {
+      id: 'Pengaturan Umum',
+      en: 'General Settings',
+    },
+  },
   label: {
     id: 'Pengaturan',
     en: 'Settings',

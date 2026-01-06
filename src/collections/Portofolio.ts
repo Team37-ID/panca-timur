@@ -4,6 +4,10 @@ export const Portofolio: CollectionConfig = {
   slug: 'portofolio',
   admin: {
     useAsTitle: 'tag',
+    group: {
+      id: 'Halaman Portofolio',
+      en: 'Portofolio Page',
+    },
   },
   labels: {
     singular: {

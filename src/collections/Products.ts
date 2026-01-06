@@ -4,6 +4,10 @@ export const Products: CollectionConfig = {
   slug: 'products',
   admin: {
     useAsTitle: 'name',
+    group: {
+      id: 'Halaman Solutions dan Landing Page',
+      en: 'Solutions and Landing Page',
+    },
   },
   labels: {
     singular: {
