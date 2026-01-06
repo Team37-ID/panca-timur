@@ -15,6 +15,14 @@ import {
   DialogDescription,
   DialogHeader,
 } from '@/components/ui/dialog'
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from '@/components/ui/breadcrumb'
 
 export default function AboutUsPage() {
   const handleBookaConsultation = () => {
@@ -104,6 +112,25 @@ export default function AboutUsPage() {
                       />
                     </div>
                     <DialogHeader className="text-left gap-[20px] p-[20px] md:p-[40px] lg:p-[60px]">
+                      <Breadcrumb>
+                        <BreadcrumbList>
+                          <BreadcrumbItem>
+                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                          </BreadcrumbItem>
+                          <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                            <BreadcrumbLink href="/detailInsightsUpdates">
+                              Insights & Updates
+                            </BreadcrumbLink>
+                          </BreadcrumbItem>
+                          <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                            <BreadcrumbPage>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                            </BreadcrumbPage>
+                          </BreadcrumbItem>
+                        </BreadcrumbList>
+                      </Breadcrumb>
                       <DialogTitle className="titleh1 text-[#0062B0]">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                       </DialogTitle>
@@ -133,6 +160,7 @@ export default function AboutUsPage() {
                         incididunt ut labore et dolore magna aliqua.
                       </DialogDescription>
                     </DialogHeader>
+                    <Footer />
                   </div>
                 </DialogContent>
               </Dialog>
@@ -175,6 +203,25 @@ export default function AboutUsPage() {
                       />
                     </div>
                     <DialogHeader className="text-left gap-[20px] p-[20px] md:p-[40px] lg:p-[60px]">
+                      <Breadcrumb>
+                        <BreadcrumbList>
+                          <BreadcrumbItem>
+                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                          </BreadcrumbItem>
+                          <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                            <BreadcrumbLink href="/detailInsightsUpdates">
+                              Insights & Updates
+                            </BreadcrumbLink>
+                          </BreadcrumbItem>
+                          <BreadcrumbSeparator />
+                          <BreadcrumbItem>
+                            <BreadcrumbPage>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                            </BreadcrumbPage>
+                          </BreadcrumbItem>
+                        </BreadcrumbList>
+                      </Breadcrumb>
                       <DialogTitle className="titleh1 text-[#0062B0]">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                       </DialogTitle>
@@ -204,6 +251,7 @@ export default function AboutUsPage() {
                         incididunt ut labore et dolore magna aliqua.
                       </DialogDescription>
                     </DialogHeader>
+                    <Footer />
                   </div>
                 </DialogContent>
               </Dialog>
