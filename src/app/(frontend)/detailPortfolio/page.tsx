@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Phone } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Footer from '../components/footer'
+import { motion } from 'motion/react'
 
 export default function AboutUsPage() {
   const handleBookaConsultation = () => {
@@ -59,7 +60,13 @@ export default function AboutUsPage() {
             <TabsTrigger value="electrical">Electrical</TabsTrigger>
           </TabsList>
           <TabsContent value="all" className="mt-[52px] md:mt-0">
-            <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px] ">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+              viewport={{ once: true }}
+              className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px] "
+            >
               <div className=" relative w-[350px] h-[467px] ">
                 <Image
                   src={'/dokumPancaTimurR/electrical1.jpg'}
@@ -260,10 +267,16 @@ export default function AboutUsPage() {
                   fill
                 />
               </div>
-            </div>
+            </motion.div>
           </TabsContent>
           <TabsContent value="mechanicalplumbing" className="mt-[52px] md:mt-0">
-            <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]  ">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+              viewport={{ once: true }}
+              className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]  "
+            >
               <div className="relative w-[350px] h-[467px]">
                 <Image
                   src={'/dokumPancaTimurR/mechanicalplumbing1.jpg'}
@@ -304,10 +317,16 @@ export default function AboutUsPage() {
                   fill
                 />
               </div>
-            </div>
+            </motion.div>
           </TabsContent>
           <TabsContent value="hvac" className="mt-[52px] md:mt-0">
-            <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]  ">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+              viewport={{ once: true }}
+              className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]  "
+            >
               <div className="relative w-[350px] h-[467px]">
                 <Image
                   src={'/dokumPancaTimurR/hvac1.jpg'}
@@ -404,10 +423,16 @@ export default function AboutUsPage() {
                   fill
                 />
               </div>
-            </div>
+            </motion.div>
           </TabsContent>
           <TabsContent value="electrical" className="mt-[52px] md:mt-0">
-            <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px] ">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+              viewport={{ once: true }}
+              className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px] "
+            >
               <div className=" relative w-[350px] h-[467px]">
                 <Image
                   src={'/dokumPancaTimurR/electrical1.jpg'}
@@ -472,7 +497,7 @@ export default function AboutUsPage() {
                   fill
                 />
               </div>
-            </div>
+            </motion.div>
           </TabsContent>
         </Tabs>
       </div>
