@@ -15,7 +15,7 @@ const Tape: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden pt-6 bg-white">
       <div className="flex w-max animate-marquee">
-        {[...images, ...images, ...images].map((src: string, index: number) => (
+        {[...images, ...images, ...images, ...images].map((src: string, index: number) => (
           <div key={index} className="mx-6 h-10 w-auto flex-shrink-0 overflow-hidden">
             <Image
               src={src}

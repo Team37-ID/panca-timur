@@ -74,7 +74,7 @@ export default function AboutUsPage() {
           <motion.div
             initial={{ opacity: 0, x: 200 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true, amount: 0.3 }}
           >
             <Card className="w-[294px]  xl:w-[363px] overflow-hidden">
@@ -144,7 +144,7 @@ export default function AboutUsPage() {
           <motion.div
             initial={{ opacity: 0, x: 200 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 3.5 }}
+            transition={{ duration: 1.5 }}
             viewport={{ once: true, amount: 0.3 }}
           >
             <Card className="w-[294px] xl:w-[363px] overflow-hidden">
@@ -218,7 +218,7 @@ export default function AboutUsPage() {
           <motion.div
             initial={{ opacity: 0, x: 200 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 5 }}
+            transition={{ duration: 2 }}
             viewport={{ once: true, amount: 0.3 }}
           >
             <Card className="w-[294px] xl:w-[363px] overflow-hidden">

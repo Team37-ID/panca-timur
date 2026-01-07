@@ -71,7 +71,7 @@ const Portfolio = () => {
         </motion.div>
       </div>
       <div>
-        <h3 className="titleh3 px-[20px] md:px-[59px] pt-82 md:pt-28 lg:pt-52">Trusted By</h3>
+        <h3 className="titleh3 text-center pt-82 md:pt-28 lg:pt-52">Trusted By</h3>
         <Tape />
       </div>
       <Link href={'/detailPortfolio'} className="p-4 md:p-8 flex justify-center">
