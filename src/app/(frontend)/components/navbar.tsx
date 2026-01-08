@@ -5,7 +5,7 @@ import { Menu, Phone, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { motion } from 'motion/react'
 
@@ -13,6 +13,17 @@ const MotionLink = motion(Link)
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -180,15 +191,15 @@ const Navbar = () => {
             >
               Insights & Updates
             </MotionLink>
+            <Button
+              onClick={handleContactUs}
+              variant={'default'}
+              className="flex flex w-[320px] flex-shrink-0"
+            >
+              <Phone className="w-4 h-4" />
+              Contact Us
+            </Button>
           </div>
-          <Button
-            onClick={handleContactUs}
-            variant={'default'}
-            className="flex flex w-[320px] flex-shrink-0 -mt-[80px]"
-          >
-            <Phone className="w-4 h-4" />
-            Contact Us
-          </Button>
           <div className="h-[30vh] w-full bg-gradient-to-t from-[#92BDEA] via-[#92BDEA]/40 to-white" />
         </div>
       )}
