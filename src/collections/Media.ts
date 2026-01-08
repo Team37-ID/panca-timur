@@ -7,8 +7,8 @@ export const Media: CollectionConfig = {
   },
   admin: {
     group: {
-      id: 'Pengaturan Umum',
-      en: 'General Settings',
+      id: 'Pengaturan Payload',
+      en: 'Payload Settings',
     },
   },
   fields: [

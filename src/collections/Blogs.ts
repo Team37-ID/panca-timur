@@ -13,10 +13,6 @@ export const Blogs: CollectionConfig = {
   slug: 'blogs',
   admin: {
     useAsTitle: 'title',
-    group: {
-      id: 'Halaman Blog',
-      en: 'Blog Page',
-    },
   },
   access: {
     read: () => true,

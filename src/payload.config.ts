@@ -18,8 +18,13 @@ import { Companies } from './collections/Companies'
 import { en } from '@payloadcms/translations/languages/en'
 import { id } from '@payloadcms/translations/languages/id'
 
-import { Settings } from './payload-globals'
-import { TextConfig } from './text-globals'
+import { AboutUsConfig } from './globals/about-us-page'
+import { InsightsConfig } from './globals/insights-page'
+import { LandingConfig } from './globals/landing-page'
+import { PortofolioConfig } from './globals/portofolio-page'
+import { SolutionsConfig } from './globals/solutions-page'
+import { FooterConfig } from './globals/footer'
+import { LogoConfig } from './globals/logo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -31,8 +36,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Blogs, Companies, Documents, Users, Media, Portofolio, Products, Services],
-  globals: [Settings, TextConfig],
+  collections: [Users, Media, Companies, Documents, Products, Services, Portofolio, Blogs],
+  globals: [
+    AboutUsConfig,
+    InsightsConfig,
+    LandingConfig,
+    PortofolioConfig,
+    SolutionsConfig,
+    FooterConfig,
+    LogoConfig,
+  ],
   editor: lexicalEditor(),
   i18n: {
     supportedLanguages: { en, id },

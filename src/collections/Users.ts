@@ -5,8 +5,8 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     group: {
-      id: 'Pengaturan Umum',
-      en: 'General Settings',
+      id: 'Pengaturan Payload',
+      en: 'Payload Settings',
     },
   },
   labels: {

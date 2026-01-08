@@ -5,10 +5,6 @@ export const Services: CollectionConfig = {
   slug: 'services',
   admin: {
     useAsTitle: 'title',
-    group: {
-      id: 'Halaman Solutions dan Landing Page',
-      en: 'Solutions and Landing Page',
-    },
   },
   labels: {
     singular: {

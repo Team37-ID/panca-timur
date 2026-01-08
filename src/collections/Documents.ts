@@ -4,10 +4,6 @@ export const Documents: CollectionConfig = {
   slug: 'documents',
   admin: {
     useAsTitle: 'name',
-    group: {
-      id: 'Halaman About Us Page',
-      en: 'About Us Page',
-    },
   },
   labels: {
     singular: {
