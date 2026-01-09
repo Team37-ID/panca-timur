@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Insights and Updates | Panca Timur Raya',
+  title: 'Insights and Updates',
   description:
     'Insights dan Updates PT Panca Timur Raya, Insight dan pengalaman yang lahir dari proyek nyata. Mengulas praktik industri dan solusi yang kami terapkan. Dibagikan untuk memperluas wawasan dan pemahaman teknis. ',
 }
