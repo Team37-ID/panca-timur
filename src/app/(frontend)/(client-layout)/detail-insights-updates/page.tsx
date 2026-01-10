@@ -25,6 +25,8 @@ import {
 } from '@/components/ui/breadcrumb'
 
 import { motion } from 'motion/react'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 // import { Metadata } from 'next'
 
@@ -38,6 +40,27 @@ export default function InsightsUpdatesPage() {
     const url = `https://wa.me/6281394056196?text=${encodeURIComponent(pesan)}`
     window.open(url, '_blank')
   }
+
+  const query = useQuery({
+    queryKey: ['insight-updates'],
+    queryFn: async () => {
+      const res = await fetch('/api/media')
+      if (res.ok) {
+        return await res.json()
+      } else {
+        throw new Error('fetch failed')
+      }
+    },
+  })
+
+  useEffect(() => {
+    if (query.data) {
+      console.log(query.data)
+    } else {
+      console.log('fail')
+    }
+  }, [query.isLoading])
+
   return (
     <>
       <Navbar />
