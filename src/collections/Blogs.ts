@@ -1,4 +1,12 @@
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import {
+  BoldFeature,
+  HeadingFeature,
+  ItalicFeature,
+  lexicalEditor,
+  LinkFeature,
+  ParagraphFeature,
+  UnderlineFeature,
+} from '@payloadcms/richtext-lexical'
 import { CollectionConfig } from 'payload'
 
 interface TextNode {
@@ -13,6 +21,9 @@ export const Blogs: CollectionConfig = {
   slug: 'blogs',
   admin: {
     useAsTitle: 'title',
+  },
+  access: {
+    read: () => true,
   },
 
   versions: {
@@ -79,6 +90,9 @@ export const Blogs: CollectionConfig = {
             id: 'Tuliskan blog anda disini',
           },
         },
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures.filter((feature) => feature.key !== 'relationship'),
+        ],
       }),
       label: {
         id: 'Konten',

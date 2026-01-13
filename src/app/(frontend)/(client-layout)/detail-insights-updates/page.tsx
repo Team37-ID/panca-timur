@@ -12,7 +12,6 @@ import {
   DialogTrigger,
   DialogContent,
   DialogTitle,
-  DialogDescription,
   DialogHeader,
 } from '@/components/ui/dialog'
 import {
@@ -23,18 +22,22 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from '@/components/ui/breadcrumb'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 
 import { motion } from 'motion/react'
 import { useQuery } from '@tanstack/react-query'
+import { Config } from '../../../../payload-types'
+import { PayloadSDK } from '@payloadcms/sdk'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useEffect } from 'react'
 
-// import { Metadata } from 'next'
-
-// export const metadata: Metadata = {
-//   title: 'Insights and Updates Page | Panca Timur Raya',
-// }
+// TODO : disable linking in richtext
 
 export default function InsightsUpdatesPage() {
+  const sdk = new PayloadSDK<Config>({
+    baseURL: '/api',
+  })
+
   const handleBookaConsultation = () => {
     const pesan = `Halo, saya ingin menanyakan ...`
     const url = `https://wa.me/6281394056196?text=${encodeURIComponent(pesan)}`
@@ -44,12 +47,11 @@ export default function InsightsUpdatesPage() {
   const query = useQuery({
     queryKey: ['insight-updates'],
     queryFn: async () => {
-      const res = await fetch('/api/media')
-      if (res.ok) {
-        return await res.json()
-      } else {
-        throw new Error('fetch failed')
-      }
+      return await sdk.find({
+        collection: 'blogs',
+        limit: 10,
+        sort: '-createdAt',
+      })
     },
   })
 
@@ -118,213 +120,101 @@ export default function InsightsUpdatesPage() {
         </p>
 
         <div className="flex flex-col items-center justify-center mt-[16px] lg:mt-[26px]">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, type: 'spring' }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <Card className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] overflow-hidden flex flex-col md:flex-row md:gap-[16px] lg:gap-[32px] md:mb-[20px] lg:mb-[44px]">
-              <div className="relative w-full h-[280px] md:w-[280px] md:h-[236px] lg:w-[400px] lg:h-[306px] flex-shrink-0">
-                <Image
-                  src="/dokumPancaTimurR/mechanicalplumbing3.jpg"
-                  alt="Image Service Mechanical & Plumbing"
-                  fill
-                  className="object-cover p-4"
-                />
-              </div>
-
+          {query.isLoading && (
+            <div className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] overflow-hidden flex flex-col md:flex-row md:gap-[16px] lg:gap-[32px] md:mb-[20px] lg:mb-[44px]">
+              <Skeleton className="bg-gray-100 relative w-full h-[280px] md:w-[280px] md:h-[236px] lg:w-[400px] lg:h-[306px] flex-shrink-0"></Skeleton>
               <div className="flex flex-col flex-1 -mt-8 md:mt-0 pb-3 px-[16px]">
-                <CardHeader className="w-full md:w-[331px] lg:w-[457px] pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
-                  <CardTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit</CardTitle>
-                </CardHeader>
-
-                <CardContent className="w-full md:w-[331px] lg:w-[457px] mb-[16px]">
-                  <p className="h4blog">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                  </p>
-                </CardContent>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="link"
-                      className="justify-start text-[#0062B0] underline"
-                      aria-label="Baca lebih lanjut blog (Read More)"
-                    >
-                      Read More
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="w-screen h-screen max-w-none max-h-none flex flex-col p-0 overflow-hidden [&>button]:hidden">
-                    <div className="flex-1 overflow-y-auto">
-                      <Navbar />
-                      <div className="relative w-full h-[111px] md:h-[222px] lg:h-[340px] flex-shrink-0">
-                        <Image
-                          src="/dokumPancaTimurR/mechanicalplumbing3.jpg"
-                          alt="Image Service Mechanical & Plumbing"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <DialogHeader className="text-left gap-[20px] p-[20px] md:p-[40px] lg:p-[60px]">
-                        <Breadcrumb>
-                          <BreadcrumbList>
-                            <BreadcrumbItem>
-                              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                              <BreadcrumbLink href="/detail-insights-updates">
-                                Insights & Updates
-                              </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                              <BreadcrumbPage>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                              </BreadcrumbPage>
-                            </BreadcrumbItem>
-                          </BreadcrumbList>
-                        </Breadcrumb>
-                        <DialogTitle className="titleh1 text-[#0062B0]">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                        </DialogTitle>
-
-                        <p className="alternative">DD-MM-YYYY</p>
-                        <DialogDescription className="text-md text-left">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-                          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum
-                          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                          incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-                          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum
-                          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                          incididunt ut labore et dolore magna aliqua.
-                        </DialogDescription>
-                      </DialogHeader>
-                      <Footer />
+                <Skeleton className="bg-gray-100 w-full md:w-[331px] lg:w-[457px] pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]" />
+                <Skeleton className="bg-gray-100 w-full md:w-[331px] lg:w-[457px] mb-[16px] h-[20px] " />
+                <Skeleton className="bg-gray-100 w-full md:w-[331px] lg:w-[457px] mb-[16px] h-[20px] " />
+              </div>
+            </div>
+          )}
+          {query.data &&
+            query.data.docs.map((data) => {
+              return (
+                <motion.div
+                  key={data.id}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7, type: 'spring' }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <Card className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] overflow-hidden flex flex-col md:flex-row md:gap-[16px] lg:gap-[32px] md:mb-[20px] lg:mb-[44px]">
+                    <div className="relative w-full h-[280px] md:w-[280px] md:h-[236px] lg:w-[400px] lg:h-[306px] flex-shrink-0">
+                      <Image
+                        src={data.featuredImg?.url ?? "/dokumPancaTimurR/mechanicalplumbing3.jpg"}
+                        alt="Image Service Mechanical & Plumbing"
+                        fill
+                        className="object-cover p-4"
+                      />
                     </div>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            </Card>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, type: 'spring' }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <Card className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] overflow-hidden flex flex-col md:flex-row md:gap-[16px] lg:gap-[32px] md:mb-[20px] lg:mb-[44px] mt-4 md:mt-0">
-              <div className="relative w-full h-[280px] md:w-[280px] md:h-[236px] lg:w-[400px] lg:h-[306px] flex-shrink-0">
-                <Image
-                  src="/dokumPancaTimurR/mechanicalplumbing3.jpg"
-                  alt="Image Service Mechanical & Plumbing"
-                  fill
-                  className="object-cover p-4"
-                />
-              </div>
+                    <div className="flex flex-col flex-1 -mt-8 md:mt-0 pb-3 px-[16px]">
+                      <CardHeader className="w-full md:w-[331px] lg:w-[457px] pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                        <CardTitle>{data.title}</CardTitle>
+                      </CardHeader>
 
-              <div className="flex flex-col flex-1 -mt-8 md:mt-0 pb-3 px-[16px]">
-                <CardHeader className="w-full md:w-[331px] lg:w-[457px] pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
-                  <CardTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit</CardTitle>
-                </CardHeader>
-
-                <CardContent className="w-full md:w-[331px] lg:w-[457px] mb-[16px]">
-                  <p className="h4blog">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                  </p>
-                </CardContent>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="link"
-                      className="justify-start text-[#0062B0] underline"
-                      aria-label="Baca lebih lanjut blog (Read More)"
-                    >
-                      Read More
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="w-screen h-screen max-w-none max-h-none flex flex-col p-0 overflow-hidden [&>button]:hidden">
-                    <div className="flex-1 overflow-y-auto">
-                      <Navbar />
-                      <div className="relative w-full h-[111px] md:h-[222px] lg:h-[340px] flex-shrink-0">
-                        <Image
-                          src="/dokumPancaTimurR/mechanicalplumbing3.jpg"
-                          alt="Image Service Mechanical & Plumbing"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <DialogHeader className="text-left gap-[20px] p-[20px] md:p-[40px] lg:p-[60px]">
-                        <Breadcrumb>
-                          <BreadcrumbList>
-                            <BreadcrumbItem>
-                              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                              <BreadcrumbLink href="/detail-insights-updates">
-                                Insights & Updates
-                              </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                              <BreadcrumbPage>
+                      <CardContent className="w-full md:w-[331px] lg:w-[457px] mb-[16px]">
+                        <p className="h4blog">{data.excerpt}</p>
+                      </CardContent>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button
+                            variant="link"
+                            className="justify-start text-[#0062B0] underline"
+                            aria-label="Baca lebih lanjut blog (Read More)"
+                          >
+                            Read More
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="w-screen h-screen max-w-none max-h-none flex flex-col p-0 overflow-hidden [&>button]:hidden">
+                          <div className="flex-1 overflow-y-auto">
+                            <Navbar />
+                            <div className="relative w-full h-[111px] md:h-[222px] lg:h-[340px] flex-shrink-0">
+                              <Image
+                                src="/dokumPancaTimurR/mechanicalplumbing3.jpg"
+                                alt="Image Service Mechanical & Plumbing"
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <DialogHeader className="text-left gap-[20px] p-[20px] md:p-[40px] lg:p-[60px]">
+                              <Breadcrumb>
+                                <BreadcrumbList>
+                                  <BreadcrumbItem>
+                                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                                  </BreadcrumbItem>
+                                  <BreadcrumbSeparator />
+                                  <BreadcrumbItem>
+                                    <BreadcrumbLink href="/detail-insights-updates">
+                                      Insights & Updates
+                                    </BreadcrumbLink>
+                                  </BreadcrumbItem>
+                                  <BreadcrumbSeparator />
+                                  <BreadcrumbItem>
+                                    <BreadcrumbPage>
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                    </BreadcrumbPage>
+                                  </BreadcrumbItem>
+                                </BreadcrumbList>
+                              </Breadcrumb>
+                              <DialogTitle className="titleh1 text-[#0062B0]">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                              </BreadcrumbPage>
-                            </BreadcrumbItem>
-                          </BreadcrumbList>
-                        </Breadcrumb>
-                        <DialogTitle className="titleh1 text-[#0062B0]">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                        </DialogTitle>
+                              </DialogTitle>
 
-                        <p className="alternative">DD-MM-YYYY</p>
-                        <DialogDescription className="text-md text-left">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-                          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum
-                          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                          incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-                          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                          magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum
-                          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                          incididunt ut labore et dolore magna aliqua.
-                        </DialogDescription>
-                      </DialogHeader>
-                      <Footer />
+                              <p className="alternative">{data.createdAt}</p>
+                              <RichText data={data.content} />
+                            </DialogHeader>
+                            <Footer />
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                     </div>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            </Card>
-          </motion.div>
+                  </Card>
+                </motion.div>
+              )
+            })}
         </div>
       </div>
 

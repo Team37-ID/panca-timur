@@ -21,6 +21,7 @@
     "@payloadcms/db-mongodb": "3.64.0",
     "@payloadcms/next": "3.64.0",
     "@payloadcms/richtext-lexical": "3.64.0",
+    "@payloadcms/sdk": "3.64.0",
     "@payloadcms/translations": "^3.69.0",
     "@payloadcms/ui": "3.64.0",
     "@radix-ui/react-dialog": "^1.1.15",
