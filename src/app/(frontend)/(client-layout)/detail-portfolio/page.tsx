@@ -7,92 +7,80 @@ import { Phone } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Footer from '../components/footer'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import React from 'react'
-
-// import { Metadata } from 'next'
-
-// export const metadata: Metadata = {
-//   title: 'Portfolio Page | Panca Timur Raya',
-// }
+import React, { useEffect, useState } from 'react'
 
 import dynamic from 'next/dynamic'
-import GalleryMechanicalPlumbing from './components/gallery-mechanical-plumbing'
-import GalleryElectrical from './components/gallery-electrical'
+
+import { useQuery } from '@tanstack/react-query'
+import { PayloadSDK } from '@payloadcms/sdk'
+import { Config } from '../../../../payload-types'
+import { Skeleton } from '@/components/ui/skeleton'
+
 const GalleryAll = dynamic(() => import('./components/gallery-all'), { ssr: false })
-const GalleryHvac = dynamic(() => import('./components/gallery-all'), { ssr: false })
+
+type GalleryItem = {
+  src: string
+  alt: string
+}
 
 export default function PortfolioPage() {
-  const galleryAll = [
-    { src: '/dokumPancaTimurR/electrical1.jpg', alt: 'electrical1' },
-    { src: '/dokumPancaTimurR/electrical2.jpg', alt: 'electrical2' },
-    { src: '/dokumPancaTimurR/electrical3.jpg', alt: 'electrical3' },
-    { src: '/dokumPancaTimurR/electrical4.jpg', alt: 'electrical4' },
-    { src: '/dokumPancaTimurR/electrical5.jpg', alt: 'electrical5' },
-    { src: '/dokumPancaTimurR/electrical6.jpg', alt: 'electrical6' },
-    { src: '/dokumPancaTimurR/electrical7.jpg', alt: 'electrical7' },
-    { src: '/dokumPancaTimurR/electrical8.jpg', alt: 'electrical8' },
-
-    { src: '/dokumPancaTimurR/hvac1.jpg', alt: 'hvac1' },
-    { src: '/dokumPancaTimurR/hvac2.jpg', alt: 'hvac2' },
-    { src: '/dokumPancaTimurR/hvac3.jpg', alt: 'hvac3' },
-    { src: '/dokumPancaTimurR/hvac4.jpg', alt: 'hvac4' },
-    { src: '/dokumPancaTimurR/hvac5.jpg', alt: 'hvac5' },
-    { src: '/dokumPancaTimurR/hvac6.jpg', alt: 'hvac6' },
-    { src: '/dokumPancaTimurR/hvac7.jpg', alt: 'hvac7' },
-    { src: '/dokumPancaTimurR/hvac8.jpg', alt: 'hvac8' },
-    { src: '/dokumPancaTimurR/hvac9.jpg', alt: 'hvac9' },
-    { src: '/dokumPancaTimurR/hvac10.jpg', alt: 'hvac10' },
-    { src: '/dokumPancaTimurR/hvac11.jpg', alt: 'hvac11' },
-    { src: '/dokumPancaTimurR/hvac12.jpg', alt: 'hvac12' },
-
-    { src: '/dokumPancaTimurR/mechanicalplumbing1.jpg', alt: 'mechanicalplumbing1' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing2.jpg', alt: 'mechanicalplumbing2' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing3.jpg', alt: 'mechanicalplumbing3' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing4.jpg', alt: 'mechanicalplumbing4' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing5.jpg', alt: 'mechanicalplumbing5' },
-  ]
-
-  const galleryElectrical = [
-    { src: '/dokumPancaTimurR/electrical1.jpg', alt: 'electrical1' },
-    { src: '/dokumPancaTimurR/electrical2.jpg', alt: 'electrical2' },
-    { src: '/dokumPancaTimurR/electrical3.jpg', alt: 'electrical3' },
-    { src: '/dokumPancaTimurR/electrical4.jpg', alt: 'electrical4' },
-    { src: '/dokumPancaTimurR/electrical5.jpg', alt: 'electrical5' },
-    { src: '/dokumPancaTimurR/electrical6.jpg', alt: 'electrical6' },
-    { src: '/dokumPancaTimurR/electrical7.jpg', alt: 'electrical7' },
-    { src: '/dokumPancaTimurR/electrical8.jpg', alt: 'electrical8' },
-  ]
-
-  const galleryHvac = [
-    { src: '/dokumPancaTimurR/hvac1.jpg', alt: 'hvac' },
-    { src: '/dokumPancaTimurR/hvac2.jpg', alt: 'hvac2' },
-    { src: '/dokumPancaTimurR/hvac3.jpg', alt: 'hvac3' },
-    { src: '/dokumPancaTimurR/hvac4.jpg', alt: 'hvac4' },
-    { src: '/dokumPancaTimurR/hvac5.jpg', alt: 'hvac5' },
-    { src: '/dokumPancaTimurR/hvac6.jpg', alt: 'hvac6' },
-    { src: '/dokumPancaTimurR/hvac7.jpg', alt: 'hvac7' },
-    { src: '/dokumPancaTimurR/hvac8.jpg', alt: 'hvac8' },
-    { src: '/dokumPancaTimurR/hvac9.jpg', alt: 'hvac9' },
-    { src: '/dokumPancaTimurR/hvac10.jpg', alt: 'hvac10' },
-    { src: '/dokumPancaTimurR/hvac11.jpg', alt: 'hvac11' },
-    { src: '/dokumPancaTimurR/hvac12.jpg', alt: 'hvac12' },
-  ]
-
-  const galleryMechanicalPlumbing = [
-    { src: '/dokumPancaTimurR/mechanicalplumbing1.jpg', alt: 'mechanicalplumbing1' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing2.jpg', alt: 'mechanicalplumbing2' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing3.jpg', alt: 'mechanicalplumbing3' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing4.jpg', alt: 'mechanicalplumbing4' },
-    { src: '/dokumPancaTimurR/mechanicalplumbing5.jpg', alt: 'mechanicalplumbing5' },
-  ]
-
-  // const [visibleCount, setVisibleCount] = React.useState(6)
-
   const handleBookaConsultation = () => {
     const pesan = `Halo, saya ingin menanyakan ...`
     const url = `https://wa.me/6281394056196?text=${encodeURIComponent(pesan)}`
     window.open(url, '_blank')
   }
+
+  const [currentTab, setCurrentTab] = useState('all')
+
+  const sdk = new PayloadSDK<Config>({
+    baseURL: '/api',
+  })
+
+  const query = useQuery({
+    queryKey: ['portofolio', currentTab],
+
+    queryFn: async ({ queryKey: [, currentTab] }) => {
+      let data
+      if (currentTab !== 'all') {
+        data = await sdk.find({
+          collection: 'portofolio',
+          limit: 0,
+          where: {
+            tag: {
+              equals: currentTab,
+            },
+          },
+        })
+      } else {
+        data = await sdk.find({
+          collection: 'portofolio',
+          limit: 0,
+        })
+      }
+      const imageData: GalleryItem[] = data.docs.map((data) => {
+        if (typeof data.image === 'string') {
+          return {
+            src: data.image,
+            alt: data.image,
+          }
+        } else {
+          return {
+            src: data.image.url ?? '',
+            alt: data.image.alt,
+          }
+        }
+      })
+      return imageData
+    },
+  })
+
+  useEffect(() => {
+    if (query.data) {
+      console.log(query.data)
+    } else {
+      console.log('fail')
+    }
+  }, [query.isLoading, query.data])
   return (
     <>
       <Navbar />
@@ -138,28 +126,81 @@ export default function PortfolioPage() {
         <Tabs defaultValue="all" className="w-full">
           <ScrollArea className="w-full  py-4 ">
             <TabsList className="flex w-max flex-nowrap justify-start">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="mechanicalplumbing">Mechanical & Plumbing</TabsTrigger>
-              <TabsTrigger value="hvac">HVAC</TabsTrigger>
-              <TabsTrigger value="electrical">Electrical</TabsTrigger>
+              <TabsTrigger onClick={() => setCurrentTab('all')} value="all">
+                All
+              </TabsTrigger>
+              <TabsTrigger
+                onClick={() => setCurrentTab('Mechanical & Plumbing')}
+                value="mechanicalplumbing"
+              >
+                Mechanical & Plumbing
+              </TabsTrigger>
+              <TabsTrigger onClick={() => setCurrentTab('HVAC')} value="hvac">
+                HVAC
+              </TabsTrigger>
+              <TabsTrigger onClick={() => setCurrentTab('Electrical')} value="electrical">
+                Electrical
+              </TabsTrigger>
               <ScrollBar orientation="horizontal" />
             </TabsList>
           </ScrollArea>
 
+          {/* TODO : if its needed, use useInfiniteQuery */}
+
           <TabsContent value="all" className="mt-[8px] md:mt-0">
-            <GalleryAll items={galleryAll} />
+            <div className="relative min-h-[500px]">
+              {!query.data ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                </div>
+              ) : (
+                <GalleryAll items={query.data} />
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value="mechanicalplumbing" className="mt-[8px] md:mt-0">
-            <GalleryMechanicalPlumbing items={galleryMechanicalPlumbing} />
+            <div className="relative min-h-[500px]">
+              {!query.data ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                </div>
+              ) : (
+                <GalleryAll items={query.data} />
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value="hvac" className="mt-[8px] md:mt-0">
-            <GalleryHvac items={galleryHvac} />
+            <div className="relative min-h-[500px]">
+              {!query.data ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                </div>
+              ) : (
+                <GalleryAll items={query.data} />
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value="electrical" className="mt-[8px] md:mt-0">
-            <GalleryElectrical items={galleryElectrical} />
+            <div className="relative min-h-[500px]">
+              {!query.data ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                  <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
+                </div>
+              ) : (
+                <GalleryAll items={query.data} />
+              )}
+            </div>
           </TabsContent>
         </Tabs>
       </div>
