@@ -1,0 +1,67 @@
+'use client'
+
+import { PayloadSDK } from '@payloadcms/sdk'
+import { Config } from '../../../../payload-types'
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
+import { useQuery } from '@tanstack/react-query'
+import { motion } from 'motion/react'
+import Image from 'next/image'
+
+export const ProductsGrid = ({ isForLandingPage = false }: { isForLandingPage?: boolean }) => {
+  const sdk = new PayloadSDK<Config>({
+    baseURL: '/api',
+  })
+  let limit = 0
+  if (isForLandingPage) {
+    limit = 6
+  }
+  const queryProducts = useQuery({
+    queryKey: ['solutions-products'],
+    queryFn: async () => {
+      return await sdk.find({
+        collection: 'products',
+        limit: limit,
+      })
+    },
+  })
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[41px] justify-items-center">
+      {queryProducts.data ? (
+        queryProducts.data.docs.map((data) => (
+          <motion.div
+            key={data.id}
+            initial={{ opacity: 0.5, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <Card className="w-[294px] xl:w-[363px] overflow-hidden">
+              <div className="relative w-full h-[303px] xl:h-[341px] min-h-[303px] xl:min-h-[341px]  ">
+                {typeof data.image === 'string' ? (
+                  <Image src={data.image} alt={data.image} fill className="object-cover p-4" />
+                ) : (
+                  <Image
+                    src={data?.image?.url ?? '/dokumPancaTimurR/TankiFRP1.jpg'}
+                    alt={data.image?.alt ?? 'Gambar Sampul'}
+                    fill
+                    className="object-cover p-4"
+                  />
+                )}
+              </div>
+              <CardHeader className="w-full text-center">
+                <CardTitle className="whitespace-nowrap  pb-3">{data.name}</CardTitle>
+              </CardHeader>
+            </Card>
+          </motion.div>
+        ))
+      ) : (
+        <>
+          <Skeleton className="bg-gray-100 mx-auto h-[400px] w-[294px] xl:w-[363px]" />
+          <Skeleton className="bg-gray-100 mx-auto h-[400px] w-[294px] xl:w-[363px]" />
+          <Skeleton className="bg-gray-100 mx-auto h-[400px] w-[294px] xl:w-[363px]" />
+        </>
+      )}
+    </div>
+  )
+}
