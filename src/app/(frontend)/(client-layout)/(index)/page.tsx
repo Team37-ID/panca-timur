@@ -14,6 +14,11 @@ import { ProductsGrid } from '../components/products-grid'
 import { Blogs } from '../components/blogs'
 import { BookAConsultationButton } from '../components/book-a-consultation-button'
 
+import config from '@payload-config'
+import { getPayload } from 'payload'
+
+const payload = await getPayload({ config })
+
 export const metadata = {
   title: 'Panca Timur Raya | Mechanical Electrical Plumbing Contractor',
   description:
@@ -24,26 +29,26 @@ export const metadata = {
   type: 'website',
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const config = await payload.findGlobal({
+    slug: 'landing-page',
+  })
   return (
     <>
       <Navbar />
       <div className="flex flex-col md:flex-row gap-6 items-center justify-between overflow-hidden">
         <div className="flex flex-col gap-4 max-w-3xl px-6 lg:px-8 w-full">
           <h1 className="titleh1 text-[#10385d]">
-            Delivering{' '}
+            {/* Delivering{' '}
             <span className="relative inline-block">
               Quality
               <span className="absolute left-0 bottom-0 -translate-y-1 md:-translate-y-1.5 w-full max-w-[162px] h-[2.5px] lg:h-[4px] bg-[#10385D] rounded-full" />
             </span>{' '}
-            Mechanical Electrical and Plumbing Solutions
+            Mechanical Electrical and Plumbing Solutions */}
+            {config.hero_heading}
           </h1>
 
-          <p className="alternative">
-            Sejak 2013, PT. Panca Timur Raya berkomitmen memberikan layanan konstruksi Mechanical,
-            Electrical, dan Plumbing (MEP) yang berkualitas, tepat waktu, aman, dan sesuai standar
-            industri.
-          </p>
+          <p className="alternative">{config.hero_description}</p>
 
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full">
             <BookAConsultationButton />
@@ -65,23 +70,28 @@ export default function HomePage() {
         </div>
 
         <div className="w-full max-w-[653px]">
-          <Image
-            className="w-full h-auto object-contain"
-            src="/dokumPancaTimurR/electrical2.jpg"
-            width={653}
-            height={505}
-            alt="Gambar Logo Panca Timur Raya"
-          />
+          {typeof config.landing_hero === 'string' ? (
+            <Image
+              src={config.landing_hero}
+              alt={config.landing_hero}
+              width={653}
+              height={505}
+              className="w-full h-auto object-contain"
+            />
+          ) : (
+            <Image
+              src={config?.landing_hero?.url ?? '/dokumPancaTimurR/electrical2.jpg'}
+              alt={config.landing_hero?.alt ?? 'Gambar Logo Panca Timur Raya'}
+              width={653}
+              height={505}
+              className="w-full h-auto object-contain"
+            />
+          )}
         </div>
       </div>
       <div className="mt-6 flex flex-col bg-[#10385D] mx-6 rounded-[8px] justify-center items-center gap-[32px] lg:gap-[32px] py-[51px] px-[20px] md:py-[40px] md:px-[44px] lg:py-[90px] lg:px-[100px]">
-        <h1 className="text-[white] titleh1">About Us</h1>
-        <p className="p text-[white] text-center">
-          PT. Panca Timur Raya merupakan perusahaan swasta berskala nasional yang berkomitmen
-          meningkatkan performa perusahaan melalui penguatan manajemen, pengembangan budaya
-          perusahaan, implementasi sistem informasi, penguatan manajemen risiko, dan peningkatan
-          kepuasan pelanggan.
-        </p>
+        <h1 className="text-[white] titleh1">{config.top_card_heading}</h1>
+        <p className="p text-[white] text-center">{config.top_card_description}</p>
         <Link
           href={'/detail-about-us'}
           className="w-full flex justify-center"
@@ -157,22 +167,42 @@ export default function HomePage() {
           <div className="relative">
             <div className="absolute top-0 left-0 transform rotate-0 z-10">
               <Card className="w-[160px] h-[213px] md:w-[200px] md:h-[267px] lg:w-[300px] lg:h-[400px]">
-                <Image
-                  src="/dokumPancaTimurR/projek1.jpg"
-                  alt="Image Project Portfolio"
-                  className="object-cover w-full h-full p-4"
-                  fill
-                />
+                {typeof config.top_card_image_1 === 'string' ? (
+                  <Image
+                    src={config.top_card_image_1}
+                    alt={config.top_card_image_1}
+                    fill
+                    className="object-cover w-full h-full p-4"
+                  />
+                ) : (
+                  <Image
+                    src={config?.top_card_image_1?.url ?? '/dokumPancaTimurR/projek1.jpg'}
+                    alt={config.top_card_image_1?.alt ?? 'Image Project Portfolio'}
+                    fill
+                    className="object-cover w-full h-full p-4"
+                  />
+                )}
               </Card>
             </div>
             <div className="absolute top-14 left-26 md:top-18 md:left-35 transform rotate-[16deg] z-0">
               <Card className="w-[160px] h-[213px] md:w-[200px] md:h-[267px] lg:w-[300px] lg:h-[400px]">
-                <Image
-                  src="/dokumPancaTimurR/mechanicalplumbing1.jpg"
-                  alt="Image Project Portfolio"
-                  className="object-cover w-full h-full p-4"
-                  fill
-                />
+                {typeof config.top_card_image_2 === 'string' ? (
+                  <Image
+                    src={config.top_card_image_2}
+                    alt={config.top_card_image_2}
+                    fill
+                    className="object-cover w-full h-full p-4"
+                  />
+                ) : (
+                  <Image
+                    src={
+                      config?.top_card_image_2?.url ?? '/dokumPancaTimurR/mechanicalplumbing1.jpg'
+                    }
+                    alt={config.top_card_image_2?.alt ?? 'Image Project Portfolio'}
+                    fill
+                    className="object-cover w-full h-full p-4"
+                  />
+                )}
               </Card>
             </div>
           </div>

@@ -611,11 +611,13 @@ export interface InsightsPage {
  */
 export interface LandingPage {
   id: string;
-  landing_hero?: (string | null) | Media;
+  landing_hero: string | Media;
   hero_heading?: string | null;
   hero_description?: string | null;
   top_card_heading?: string | null;
   top_card_description?: string | null;
+  top_card_image_1: string | Media;
+  top_card_image_2: string | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -723,6 +725,8 @@ export interface LandingPageSelect<T extends boolean = true> {
   hero_description?: T;
   top_card_heading?: T;
   top_card_description?: T;
+  top_card_image_1?: T;
+  top_card_image_2?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

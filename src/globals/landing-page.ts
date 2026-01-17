@@ -27,6 +27,7 @@ export const LandingConfig: GlobalConfig = {
           name: 'landing_hero',
           type: 'upload',
           relationTo: 'media',
+          required: true,
           label: {
             id: 'Gambar Landing Page',
             en: 'Landing Page Picture',
@@ -74,6 +75,38 @@ export const LandingConfig: GlobalConfig = {
           label: {
             id: 'Deskripsi',
             en: 'Description',
+          },
+        },
+      ],
+    },
+    {
+      type: 'collapsible',
+      label: {
+        id: 'Foto Porfofolio',
+        en: 'Portofolio Photo',
+      },
+      admin: {
+        initCollapsed: true,
+      },
+      fields: [
+        {
+          name: 'top_card_image_1',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          label: {
+            id: 'Gambar Foto 1',
+            en: 'First Photo',
+          },
+        },
+        {
+          name: 'top_card_image_2',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          label: {
+            id: 'Gambar Foto 2',
+            en: 'Second Photo',
           },
         },
       ],
