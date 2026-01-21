@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ScrollBar } from '@/components/ui/scroll-area'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 
 const GalleryAll = dynamic(() => import('./gallery-all'), { ssr: false })
 
@@ -87,58 +88,94 @@ export const PortofolioTabs = () => {
       {/* TODO : if its needed, use useInfiniteQuery */}
 
       <TabsContent value="all" className="mt-[8px] md:mt-0">
-        <div className="relative min-h-[500px]">
-          {!query.data ? (
+        <div className="relative min-h-[250px]">
+          {query.data ? (
+            <GalleryAll items={query.data} />
+          ) : query.isError ? (
+            <Card className=" flex flex-col justify-items-center m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+            </Card>
+          ) : query.isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : (
-            <GalleryAll items={query.data} />
-          )}
+          ) : null}
         </div>
       </TabsContent>
 
       <TabsContent value="mechanicalplumbing" className="mt-[8px] md:mt-0">
-        <div className="relative min-h-[500px]">
-          {!query.data ? (
+        <div className="relative min-h-[250px]">
+          {query.data ? (
+            <GalleryAll items={query.data} />
+          ) : query.isError ? (
+            <Card className=" flex flex-col justify-items-center m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+            </Card>
+          ) : query.isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : (
-            <GalleryAll items={query.data} />
-          )}
+          ) : null}
         </div>
       </TabsContent>
 
       <TabsContent value="hvac" className="mt-[8px] md:mt-0">
-        <div className="relative min-h-[500px]">
-          {!query.data ? (
+        <div className="relative min-h-[250px]">
+          {query.data ? (
+            <GalleryAll items={query.data} />
+          ) : query.isError ? (
+            <Card className=" flex flex-col justify-items-center m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+            </Card>
+          ) : query.isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : (
-            <GalleryAll items={query.data} />
-          )}
+          ) : null}
         </div>
       </TabsContent>
 
       <TabsContent value="electrical" className="mt-[8px] md:mt-0">
-        <div className="relative min-h-[500px]">
-          {!query.data ? (
+        <div className="relative min-h-[250px]">
+          {query.data ? (
+            <GalleryAll items={query.data} />
+          ) : query.isError ? (
+            <Card className=" flex flex-col justify-items-center m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+            </Card>
+          ) : query.isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : (
-            <GalleryAll items={query.data} />
-          )}
+          ) : null}
         </div>
       </TabsContent>
     </Tabs>

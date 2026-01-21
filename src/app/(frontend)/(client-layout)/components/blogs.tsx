@@ -39,6 +39,26 @@ export const Blogs = ({ isForLandingPage = false }: { isForLandingPage?: boolean
           </div>
         </div>
       )}
+      {query.error && (
+        <Card className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] overflow-hidden flex flex-col md:gap-[16px] lg:gap-[32px] md:mb-[20px] lg:mb-[44px] mx-auto">
+          <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+            <CardTitle className="text-center">Belum ada Blog</CardTitle>
+          </CardHeader>
+          <CardContent className="w-full text-center  mb-[16px]">
+            <div className="p">Stay Tuned untuk Insight Updates yang akan datang!</div>
+          </CardContent>
+        </Card>
+      )}
+      {query.data && query.data.docs.length === 0 && (
+        <Card className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] overflow-hidden flex flex-col md:gap-[16px] lg:gap-[32px] md:mb-[20px] lg:mb-[44px]">
+          <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+            <CardTitle className="text-center">Belum ada Blog</CardTitle>
+          </CardHeader>
+          <CardContent className="w-full text-center  mb-[16px]">
+            <div className="p">Stay Tuned untuk Insight Updates yang akan datang!</div>
+          </CardContent>
+        </Card>
+      )}
       {query.data &&
         query.data.docs.map((data) => {
           return (
