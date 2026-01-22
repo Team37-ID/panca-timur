@@ -133,9 +133,10 @@ export default async function HomePage() {
       </>
       <div className="overflow-x-hidden">
         <h1 className="titleh1 text-center text-[#10385D] py-8 md:py-12">Portfolio</h1>
-        <div className="flex flex-col md:flex-row pl-14 md:pl-15 lg:pl-18 xl:pl-32 gap-[40px] md:gap-[44px] lg:gap-[60px] xl:gap-[180px]">
+        {/* <div className="flex flex-col md:flex-row pl-14 md:pl-15 lg:pl-18 xl:pl-32 gap-[40px] md:gap-[44px] lg:gap-[60px] xl:gap-[180px]"> */}
+        <div className="flex flex-col md:flex-row gap-[40px] md:gap-0 w-full max-w-[1280px] px-4 sm:px-6 md:px-16 xl:px-32">
           <div className="flex flex-col gap-[20px] md:gap-[30px] lg:gap-16 xl:gap-20">
-            <div className="flex items-stretch">
+            <div className="flex items-stretch mx-auto">
               <div className="relative flex flex-col items-center">
                 <span className="w-7 h-7 rounded-full bg-[#10385D]" />
                 <span className="w-[6px] flex-1 bg-[#10385D]" />
@@ -144,10 +145,10 @@ export default async function HomePage() {
                 <p className="statnum text-[48px] font-bold text-[#10385D] leading-none">
                   <AnimatedNumber value={11} suffix="+" />
                 </p>
-                <p className="stattext text-[#10385D]">Years of Experience</p>
+                <p className="stattext text-[#10385D] whitespace-nowrap">Years of Experience</p>
               </div>
             </div>
-            <div className="flex items-stretch">
+            <div className="flex items-stretch mx-auto">
               <div className="relative flex flex-col items-center">
                 <span className="w-7 h-7 rounded-full bg-[#10385D]" />
                 <span className="w-[6px] flex-1 bg-[#10385D]" />
@@ -156,12 +157,12 @@ export default async function HomePage() {
                 <p className="statnum text-[48px] font-bold text-[#10385D] leading-none">
                   <AnimatedNumber value={114} suffix="+" />
                 </p>
-                <p className="stattext text-[#10385D]">Projects Completed</p>
+                <p className="stattext text-[#10385D] whitespace-nowrap">Projects Completed</p>
               </div>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute top-0 left-0 transform rotate-0 z-10">
+          <div className="relative flex justify-center w-full">
+            <div className="absolute top-0 left-1/3 -translate-x-1/3 z-10">
               <Card className="w-[160px] h-[213px] md:w-[200px] md:h-[267px] lg:w-[300px] lg:h-[400px]">
                 {typeof config.top_card_image_1 === 'string' ? (
                   <Image
@@ -180,7 +181,7 @@ export default async function HomePage() {
                 )}
               </Card>
             </div>
-            <div className="absolute top-14 left-26 md:top-18 md:left-35 transform rotate-[16deg] z-0">
+            <div className="absolute top-14 md:top-18 left-2/3 -translate-x-2/3 transform rotate-[16deg] z-0">
               <Card className="w-[160px] h-[213px] md:w-[200px] md:h-[267px] lg:w-[300px] lg:h-[400px]">
                 {typeof config.top_card_image_2 === 'string' ? (
                   <Image
@@ -222,6 +223,7 @@ export default async function HomePage() {
           </Button>
         </Link>
       </div>
+
       <div className="flex justify-center mt-6 bg-[#F5F7FA]">
         <div className="flex flex-col items-center py-4 lg:py-6">
           <h1 className="titleh1 text-[#10385d] mb-8">Insights & Updates</h1>
