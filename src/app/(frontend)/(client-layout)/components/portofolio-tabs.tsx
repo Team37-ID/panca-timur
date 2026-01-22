@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ScrollBar } from '@/components/ui/scroll-area'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card'
 
 const GalleryAll = dynamic(() => import('./gallery-all'), { ssr: false })
 
@@ -64,7 +64,7 @@ export const PortofolioTabs = () => {
   })
   return (
     <Tabs defaultValue="all" className="w-full">
-      <ScrollArea className="w-full  py-4 ">
+      <ScrollArea className="w-full py-4 ">
         <TabsList className="flex w-max flex-nowrap justify-start">
           <TabsTrigger onClick={() => setCurrentTab('all')} value="all">
             All
@@ -92,13 +92,18 @@ export const PortofolioTabs = () => {
           {query.data ? (
             <GalleryAll items={query.data} />
           ) : query.isError ? (
-            <Card className=" flex flex-col justify-items-center m-2 mx-6">
+            <Card className="flex flex-col  m-2 mx-6">
               <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
                 <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
               </CardHeader>
               <CardContent className="w-full text-center pb-[12px] mb-[16px]">
                 <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
               </CardContent>
+              <CardFooter>
+                <div className="invisible" aria-hidden="true">
+                  Spacer
+                </div>
+              </CardFooter>
             </Card>
           ) : query.isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-[16px] md:gap-y-[24px] lg:gap-y-[44px]">

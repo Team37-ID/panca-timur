@@ -27,9 +27,9 @@ export const ProductsGrid = ({ isForLandingPage = false }: { isForLandingPage?: 
   })
   if (queryProducts.error) {
     return (
-      <Card className=" flex flex-col justify-items-center m-2 mx-6">
+      <Card className="flex flex-col m-2 mx-6">
         <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
-          <CardTitle className="text-center">Tidak ditemukan Products</CardTitle>
+          <CardTitle className="text-center">Tidak ditemukan Produk</CardTitle>
         </CardHeader>
         <CardContent className="w-full text-center pb-[12px] mb-[16px]">
           <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>

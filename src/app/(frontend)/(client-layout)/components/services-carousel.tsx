@@ -43,7 +43,7 @@ export const ServicesCarousel = () => {
 
   if (queryServices.error) {
     return (
-      <Card className=" flex flex-col justify-items-center m-2 mx-6">
+      <Card className=" flex flex-col m-2 mx-6">
         <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
           <CardTitle className="text-center">Tidak ditemukan Services</CardTitle>
         </CardHeader>

@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card'
 import Link from 'next/link'
 
 export const Blogs = ({ isForLandingPage = false }: { isForLandingPage?: boolean }) => {
@@ -40,13 +40,18 @@ export const Blogs = ({ isForLandingPage = false }: { isForLandingPage?: boolean
         </div>
       )}
       {query.error && (
-        <Card className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] overflow-hidden flex flex-col md:gap-[16px] lg:gap-[32px] md:mb-[20px] lg:mb-[44px] mx-auto">
-          <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+        <Card className="w-[332px] md:w-[699px] md:h-[236px] lg:w-[945px] lg:h-[306px] flex flex-col md:mb-[20px] lg:mb-[44px] ">
+          <CardHeader className="w-full my-auto ">
             <CardTitle className="text-center">Belum ada Blog</CardTitle>
           </CardHeader>
-          <CardContent className="w-full text-center  mb-[16px]">
+          <CardContent className="w-full text-center my-auto ">
             <div className="p">Stay Tuned untuk Insight Updates yang akan datang!</div>
           </CardContent>
+          <CardFooter>
+            <div className="invisible" aria-hidden="true">
+              Spacer
+            </div>
+          </CardFooter>
         </Card>
       )}
       {query.data && query.data.docs.length === 0 && (
