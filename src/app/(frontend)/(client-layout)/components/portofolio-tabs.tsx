@@ -84,9 +84,6 @@ export const PortofolioTabs = () => {
           <ScrollBar orientation="horizontal" />
         </TabsList>
       </ScrollArea>
-
-      {/* TODO : if its needed, use useInfiniteQuery */}
-
       <TabsContent value="all" className="mt-[8px] md:mt-0">
         <div className="relative min-h-[250px]">
           {query.data ? (

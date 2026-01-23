@@ -42,12 +42,7 @@ export default async function SolutionsPage() {
         )}
       </div>
       <div className="flex flex-col lg:flex-row px-[24px] py-[12px] md:px-[36px] md:py-[20px] xl:px-[30px] xl:py-[57px] ">
-        <h1 className="titleh1 text-[#0062B0] w-full">
-          {/* Smart Solutions for Reliable <br className="hidden md:block" />
-          Mechanical Electrical <br className="hidden xl:block" />
-          Plumbing Systems */}
-          {config.solutions_hero_heading}
-        </h1>
+        <h1 className="titleh1 text-[#0062B0] w-full">{config.solutions_hero_heading}</h1>
         <div className="lg:max-w-[509px] mb-[38px]">
           <p className="alternative my-[20px] lg:mb-[30px]">{config.solutions_hero_description}</p>
           <div className="gap-[12px] lg:gap-[23px] flex flex-col lg:flex-row ">

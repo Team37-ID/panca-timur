@@ -34,15 +34,7 @@ export default async function HomePage() {
     <>
       <div className="flex flex-col md:flex-row gap-6 items-center justify-between overflow-hidden">
         <div className="flex flex-col gap-4 max-w-3xl px-6 lg:px-8 w-full">
-          <h1 className="titleh1 text-[#10385d]">
-            {/* Delivering{' '}
-            <span className="relative inline-block">
-              Quality
-              <span className="absolute left-0 bottom-0 -translate-y-1 md:-translate-y-1.5 w-full max-w-[162px] h-[2.5px] lg:h-[4px] bg-[#10385D] rounded-full" />
-            </span>{' '}
-            Mechanical Electrical and Plumbing Solutions */}
-            {config.hero_heading}
-          </h1>
+          <h1 className="titleh1 text-[#10385d]">{config.hero_heading}</h1>
 
           <p className="alternative">{config.hero_description}</p>
 

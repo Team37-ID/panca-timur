@@ -44,12 +44,7 @@ const AboutUs = ({ config }: { config: AboutUsPage }) => {
         )}
       </div>
       <div className="flex flex-col lg:flex-row px-[24px] py-[12px] md:px-[44px] md:py-[20px]  xl:px-[68px] xl:py-[58px] ">
-        <h1 className="titleh1 text-[#0062B0] w-full">
-          {/* Who We Are Behind <br className="hidden xl:block" />
-          Every Reliable Project */}
-          {/* TODO : try maybe convert to richtext */}
-          {config.about_us_hero_heading}
-        </h1>
+        <h1 className="titleh1 text-[#0062B0] w-full">{config.about_us_hero_heading}</h1>
         <div className="lg:max-w-[500px]">
           <p className="alternative my-[20px] lg:mb-[30px]">{config.about_us_hero_description}</p>
           <div className="gap-[12px] lg:gap-[23px] flex flex-col lg:flex-row ">

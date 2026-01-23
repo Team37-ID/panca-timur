@@ -47,11 +47,7 @@ export default async function InsightsUpdatesPage() {
         )}
       </div>
       <div className="flex flex-col lg:flex-row px-[24px] py-[12px] md:px-[44px] md:py-[20px]  xl:px-[68px] xl:py-[58px] ">
-        <h1 className="titleh1 text-[#0062B0] w-full">
-          {/* Our Thoughts, <br className="hidden xl:block" />
-          Experience, and Expertise */}
-          {config.insights_hero_heading}
-        </h1>
+        <h1 className="titleh1 text-[#0062B0] w-full">{config.insights_hero_heading}</h1>
         <div className="lg:max-w-[500px]">
           <p className="alternative my-[20px] lg:mb-[30px]">{config.insights_hero_description}</p>
           <div className="gap-[12px] lg:gap-[23px] flex flex-col lg:flex-row ">

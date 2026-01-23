@@ -38,12 +38,7 @@ export default async function PortfolioPage() {
         )}
       </div>
       <div className="flex flex-col lg:flex-row px-[24px] py-[12px] md:px-[44px] md:py-[20px]  xl:px-[68px] xl:py-[58px] ">
-        <h1 className="titleh1 text-[#0062B0] w-full">
-          {/* Proven Experience in <br className="hidden xl:block" />
-          Mechanical Electrical <br className="hidden xl:block" />
-          and Plumbing Works */}
-          {config.portofolio_hero_heading}
-        </h1>
+        <h1 className="titleh1 text-[#0062B0] w-full">{config.portofolio_hero_heading}</h1>
         <div className="lg:max-w-[500px]">
           <p className="alternative my-[20px] lg:mb-[30px]">{config.portofolio_hero_description}</p>
           <div>
