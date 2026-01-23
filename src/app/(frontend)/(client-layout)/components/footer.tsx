@@ -24,6 +24,7 @@ const Footer = ({ config }: { config: SiteConfig }) => {
                 alt={config.logo}
                 width={128}
                 height={93}
+                loading="eager"
                 className="object-contain"
               />
             ) : (
@@ -32,6 +33,7 @@ const Footer = ({ config }: { config: SiteConfig }) => {
                 alt={config.logo?.alt ?? 'Gambar Logo Panca Timur Raya'}
                 width={128}
                 height={93}
+                loading="eager"
                 className="object-contain"
               />
             )}
