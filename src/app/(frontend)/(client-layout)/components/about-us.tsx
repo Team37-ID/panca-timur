@@ -216,7 +216,6 @@ const AboutUs = ({ config }: { config: AboutUsPage }) => {
         <div className="flex flex-col lg:flex-row lg:gap-[44px]">
           <div className="lg:w-[450px] xl:w-[580px]">
             <p className="w-full p text-[#747775] pb-4">
-              {/* Verified documents that ensure our compliance and credibility. */}
               {config.about_us_legal_subtitle}
             </p>
             <motion.div

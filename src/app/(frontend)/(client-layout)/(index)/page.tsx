@@ -125,7 +125,6 @@ export default async function HomePage() {
       </>
       <div className="overflow-x-hidden">
         <h1 className="titleh1 text-center text-[#10385D] py-8 md:py-12">Portfolio</h1>
-        {/* <div className="flex flex-col md:flex-row pl-14 md:pl-15 lg:pl-18 xl:pl-32 gap-[40px] md:gap-[44px] lg:gap-[60px] xl:gap-[180px]"> */}
         <div className="flex flex-col md:flex-row gap-[40px] md:gap-0 w-full max-w-[1280px] px-4 sm:px-6 md:px-16 xl:px-32">
           <div className="flex flex-col gap-[20px] md:gap-[30px] lg:gap-16 xl:gap-20">
             <div className="flex items-stretch mx-auto">

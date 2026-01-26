@@ -34,14 +34,6 @@ const Navbar = ({ config }: { config: SiteConfig }) => {
     <>
       <div className="hidden lg:flex px-8 py-6 justify-between items-center">
         <Link href={'/'} aria-label="kembali ke halaman utama (Landing Page)">
-          {/* <Image
-            src="/dokumPancaTimurR/logo.jpg"
-            width={64}
-            height={46}
-            style={{ height: 'auto' }}
-            className="object-contain"
-            alt="Gambar Logo Panca Timur Raya"
-          /> */}
           {typeof config.logo === 'string' ? (
             <Image
               src={config.logo}
@@ -126,14 +118,6 @@ const Navbar = ({ config }: { config: SiteConfig }) => {
       {/* tablet & mobile */}
       <div className="lg:hidden flex flex-row justify-between px-[32px] py-[20px] ">
         <Link href={'/'} aria-label="kembali ke halaman utama (Landing Page)">
-          {/* <Image
-            src="/dokumPancaTimurR/logo.jpg"
-            width={64}
-            height={46}
-            style={{ height: 'auto' }}
-            className="object-contain"
-            alt="Gambar Logo Panca Timur Raya"
-          /> */}
           {typeof config.logo === 'string' ? (
             <Image
               src={config.logo}
