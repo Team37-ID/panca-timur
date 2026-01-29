@@ -28,6 +28,7 @@ export default function GalleryAll({ items }: { items: GalleryItem[] }) {
         setIncrement(3)
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth])
 
   return (

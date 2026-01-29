@@ -9,7 +9,7 @@ export function PhoneNumberProvider({
   value,
 }: {
   children: React.ReactNode
-  value: any
+  value: string
 }) {
   return <PhoneNumberContext.Provider value={value}>{children}</PhoneNumberContext.Provider>
 }
