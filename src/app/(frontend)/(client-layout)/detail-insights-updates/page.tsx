@@ -24,14 +24,6 @@ export default async function InsightsUpdatesPage() {
   return (
     <>
       <div className="relative w-full h-[122px] md:h-[244px] xl:h-[400px]">
-        <Image
-          className="object-cover"
-          fill
-          priority
-          loading="eager"
-          alt="Image Insights Updates"
-          src={'/dokumPancaTimurR/hvac8.jpg'}
-        />
         {typeof config.insights_hero === 'string' ? (
           <Image
             src={config.insights_hero}
