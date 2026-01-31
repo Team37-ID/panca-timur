@@ -109,7 +109,21 @@ export const PortofolioTabs = () => {
               <Skeleton className="hidden md:block relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="hidden lg:block relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : null}
+          ) : (
+            <Card className="flex flex-col  m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+              <CardFooter>
+                <div className="invisible" aria-hidden="true">
+                  Spacer
+                </div>
+              </CardFooter>
+            </Card>
+          )}
         </div>
       </TabsContent>
 
@@ -132,7 +146,21 @@ export const PortofolioTabs = () => {
               <Skeleton className="hidden md:block relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="hidden lg:block relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : null}
+          ) : (
+            <Card className="flex flex-col  m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+              <CardFooter>
+                <div className="invisible" aria-hidden="true">
+                  Spacer
+                </div>
+              </CardFooter>
+            </Card>
+          )}
         </div>
       </TabsContent>
 
@@ -155,7 +183,21 @@ export const PortofolioTabs = () => {
               <Skeleton className="hidden md:block relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="hidden lg:block relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : null}
+          ) : (
+            <Card className="flex flex-col  m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+              <CardFooter>
+                <div className="invisible" aria-hidden="true">
+                  Spacer
+                </div>
+              </CardFooter>
+            </Card>
+          )}
         </div>
       </TabsContent>
 
@@ -178,7 +220,21 @@ export const PortofolioTabs = () => {
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
               <Skeleton className="relative bg-gray-100 w-[350px] h-[467px] object-cover my-[16px] md:my-[24px] lg:my-[44px]" />
             </div>
-          ) : null}
+          ) : (
+            <Card className="flex flex-col  m-2 mx-6">
+              <CardHeader className="w-full pt-[24px] md:pt-[44px] lg:pt-[60px] mb-[16px]">
+                <CardTitle className="text-center">Tidak ditemukan Portofolio</CardTitle>
+              </CardHeader>
+              <CardContent className="w-full text-center pb-[12px] mb-[16px]">
+                <div className="p">Mungkin terjadi kesalahan, coba muat ulang halaman ini</div>
+              </CardContent>
+              <CardFooter>
+                <div className="invisible" aria-hidden="true">
+                  Spacer
+                </div>
+              </CardFooter>
+            </Card>
+          )}
         </div>
       </TabsContent>
     </Tabs>
